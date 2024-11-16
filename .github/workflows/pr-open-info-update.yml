@@ -1,0 +1,43 @@
+name: pr open info updates
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+permissions: write-all
+
+jobs:
+  pr-open-info-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # ---------- auto-merge label이 없을때 타이틀 설정 ----------
+      - name: Run Python PR Title Updater
+        if: ${{ !contains(join(github.event.pull_request.labels.*.name, ' '), 'auto-merge') }}
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+
+          output=$(python ./.github/workflows/pr_title_updater.py $PR_NUMBER $GITHUB_TOKEN)
+          echo "Result is $output"
+
+      # ---------- auto-merge label이 있을때 타이틀 설정 + 오토머지 활성화 ----------
+      - name: auto merge enable
+        if: contains(join(github.event.pull_request.labels.*.name, ' '), 'auto-merge')
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          GITHUB_TOKEN="${{ secrets.DEV_BOT_TOKEN }}"
+          
+          # 오토 (스쿼시)머지 설정
+          gh pr merge $PR_NUMBER --auto --squash --repo ${{ github.repository }}
+          
+          # 오토 머지에 맞는 타이틀 설정
+          output=$(python ./.github/workflows/pr_title_updater.py $PR_NUMBER $GITHUB_TOKEN)
+          echo "Result is $output"
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEV_BOT_TOKEN }}
