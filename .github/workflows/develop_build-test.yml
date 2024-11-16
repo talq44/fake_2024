@@ -37,9 +37,6 @@ jobs:
         # Install Tuist via Mise
         mise install tuist
 
-        # Verify Tuist installation
-        tuist --version
-
     - name: Tuist install
       run: |
         mise x -- tuist install
