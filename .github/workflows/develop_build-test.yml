@@ -22,6 +22,15 @@ jobs:
       run: |
         curl https://mise.jdx.dev/install.sh | sh
         export PATH="$HOME/.local/bin/$PATH" # Installs the tools in .mise.toml in the project root
+
+    - name: Activate Mise
+      run: |
+        # Add shims directory to PATH
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+
+        # Activate mise
+        mise activate
+        
         mise doctor # verify the output of mise is correct on CI
 
     - name: Install Tuist CLI  
