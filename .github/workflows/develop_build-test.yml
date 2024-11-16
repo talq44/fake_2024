@@ -1,0 +1,45 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: develop build test
+
+on:
+  pull_request:
+    branches: '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: macos-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: setup mise
+      run: |
+        curl https://mise.jdx.dev/install.sh | sh
+        export PATH="$HOME/.local/bin/$PATH" # Installs the tools in .mise.toml in the project root
+        mise doctor # verify the output of mise is correct on CI
+
+    - name: Install Tuist CLI  
+      run: |
+        # Install Tuist via Mise
+        mise install tuist
+
+        # Verify Tuist installation
+        tuist --version
+
+    - name: Tuist install
+      run: |
+        mise x -- tuist install
+    
+    - name: Tuist build
+      run: |
+        mise x -- tuist build
+
+    - name: Tuist Test
+      run: |
+        mise x -- tuist test
