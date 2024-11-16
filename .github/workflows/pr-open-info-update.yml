@@ -33,4 +33,4 @@ jobs:
           output=$(python ./.github/workflows/pr_title_updater.py $PR_NUMBER $GITHUB_TOKEN)
           echo "Result is $output"
         env:
-          GITHUB_TOKEN: ${{ secrets.DEV_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
