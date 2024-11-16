@@ -1,8 +1,9 @@
 import sys
+import os
 import random
 from enum import Enum
-import github_api
 import re
+from . import github_api
 
 pr_number = ""
 github_token = ""
