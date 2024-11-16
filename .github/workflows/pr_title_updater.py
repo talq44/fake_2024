@@ -1,5 +1,4 @@
 import sys
-import os
 import random
 from enum import Enum
 import re
