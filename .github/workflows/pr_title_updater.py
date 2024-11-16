@@ -2,7 +2,8 @@ import sys
 import random
 from enum import Enum
 import re
-from . import github_api
+import github_api
+from github_api import PullRequestResponse
 
 pr_number = ""
 github_token = ""
