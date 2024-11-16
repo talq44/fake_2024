@@ -18,25 +18,28 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
-    - name: Install Tuist
+    - name: setup mise
       run: |
-        # Install tuist
-        curl -Ls https://install.tuist.io | bash
+        curl https://mise.jdx.dev/install.sh | sh
+        export PATH="$HOME/.local/bin/$PATH" # Installs the tools in .mise.toml in the project root
+        mise doctor # verify the output of mise is correct on CI
 
-        # Add Tuist to PATH
-        export PATH="$HOME/.tuist/bin:$PATH"
+    - name: Install Tuist CLI  
+      run: |
+        # Install Tuist via Mise
+        mise install tuist
 
-        # Verify installation
+        # Verify Tuist installation
         tuist --version
 
-    - name: launch Tuist install
+    - name: Tuist install
       run: |
-        ~/.local/bin/mise x -- tuist install
+        mise x -- tuist install
     
-    - name: launch Tuist build
+    - name: Tuist build
       run: |
-        ~/.local/bin/mise x -- tuist build
+        mise x -- tuist build
 
-    - name: launch Tuist Test
+    - name: Tuist Test
       run: |
-        ~/.local/bin/mise x -- tuist test
+        mise x -- tuist test
