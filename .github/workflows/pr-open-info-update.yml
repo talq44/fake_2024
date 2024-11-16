@@ -29,8 +29,5 @@ jobs:
           # 오토 (스쿼시)머지 설정
           gh pr merge $PR_NUMBER --auto --squash --repo ${{ github.repository }}
           
-          # 오토 머지에 맞는 타이틀 설정
-          output=$(python ./.github/workflows/pr_title_updater.py $PR_NUMBER $GITHUB_TOKEN)
-          echo "Result is $output"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
