@@ -50,7 +50,16 @@ flowchart TD
 
 ### TMA
 - The Modular Architecture (TMA)[(링크)](https://docs.tuist.dev/en/guides/develop/projects/tma-architecture)를 지향합니다.
-
+```mermaid
+flowchart TD
+  FeatureExample --> Feature
+  FeatureExample --> FeatureTest
+  Feature --> FeatureInterface
+  FeatureTests --> Feature
+  FeatureTests --> FeatureTest
+  FeatureTest --> FeatureInterface
+  
+```
 
 # CI/CD
 ### CI(Continuous Integration)
