@@ -2,13 +2,13 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project(
-    name: "UserAPI",
+    name: "ReactiveX",
     targets: [
         .target(
-            name: "UserAPI",
+            name: "ReactiveX",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.UserAPI",
+            bundleId: "io.tuist.ReactiveX",
             deploymentTargets: .oneVersion(),
             infoPlist: .extendingDefault(
                 with: [
@@ -20,19 +20,12 @@ let project = Project(
             ),
             sources: ["Sources/**"],
             dependencies: [
-                .SPM.alamofire,
-                .SPM.moya
+                .SPM.rxSwift,
+                .SPM.rxCocoa,
+                .SPM.rxGesture,
+                .SPM.rxDataSources,
+                .SPM.reactorKit,
             ]
-        ),
-        .target(
-            name: "UserAPITests",
-            destinations: .iOS,
-            product: .unitTests,
-            bundleId: "io.tuist.UserAPITests",
-            infoPlist: .default,
-            sources: ["Tests/**"],
-            resources: [],
-            dependencies: [.target(name: "UserAPI")]
         ),
     ]
 )
