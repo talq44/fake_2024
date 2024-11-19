@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
     name: "appstore",
@@ -8,6 +9,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.appstore",
+            deploymentTargets: .oneVersion(),
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [

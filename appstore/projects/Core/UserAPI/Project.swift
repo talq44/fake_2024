@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
     name: "UserAPI",
@@ -8,6 +9,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.UserAPI",
+            deploymentTargets: .oneVersion(),
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -17,7 +19,10 @@ let project = Project(
                 ]
             ),
             sources: ["Sources/**"],
-            dependencies: []
+            dependencies: [
+                .SPM.alamofire,
+                .SPM.moya
+            ]
         ),
         .target(
             name: "UserAPITests",
