@@ -1,5 +1,4 @@
 import ProjectDescription
-import ProjectDescriptionHelpers
 
 let project = Project(
     name: "appstore",
@@ -9,7 +8,6 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.appstore",
-            deploymentTargets: .appVersion,
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -18,7 +16,8 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["Sources/**"],
+            sources: ["appstore/Sources/**"],
+            resources: ["appstore/Resources/**"],
             dependencies: []
         ),
         .target(
@@ -27,7 +26,7 @@ let project = Project(
             product: .unitTests,
             bundleId: "io.tuist.appstoreTests",
             infoPlist: .default,
-            sources: ["Tests/**"],
+            sources: ["appstore/Tests/**"],
             resources: [],
             dependencies: [.target(name: "appstore")]
         ),
