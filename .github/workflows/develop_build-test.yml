@@ -21,8 +21,10 @@ jobs:
     - name: setup mise
       run: |
         curl https://mise.jdx.dev/install.sh | sh
-        echo "eval \"\$(/Users/runner/.local/bin/mise activate bash)\"" >> ~/.bashrc
-        export PATH="$HOME/.local/bin/$PATH" # Installs the tools in .mise.toml in the project root
+
+        export PATH="$HOME/.local/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
         mise doctor # verify the output of mise is correct on CI
 
     - name: Install Tuist CLI  
