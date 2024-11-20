@@ -53,15 +53,18 @@ jobs:
     
     - name: Tuist build
       run: |
+        cd appstore
+
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
 
-        cd appstore
         tuist build
 
     - name: Tuist Test
       run: |
+        cd appstore
+        
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
-        cd appstore
+
         tuist test
