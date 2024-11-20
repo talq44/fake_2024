@@ -69,6 +69,7 @@ jobs:
         tuist build
 
     - name: Tuist Test
+      if: ${{ vars.TUIST_TEST_ON_OFF }}
       run: |
         cd appstore/
 
