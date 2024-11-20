@@ -36,6 +36,9 @@ jobs:
         
         # Install Tuist
         mise install tuist
+                
+        # Set global default version for Tuist
+        mise use -g tuist@4.34.3
 
         # Verify Tuist installation
         tuist --version
