@@ -1,11 +1,7 @@
-# This workflow will build a Swift project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
-
 name: develop build test
 
 on:
   pull_request:
-    branches: '*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,31 +11,68 @@ jobs:
   build-test:
     runs-on: macos-latest
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v4
 
-    - name: setup mise
+    - name: Setup mise
       run: |
+        # Install mise
         curl https://mise.jdx.dev/install.sh | sh
-        export PATH="$HOME/.local/bin/$PATH" # Installs the tools in .mise.toml in the project root
-        mise doctor # verify the output of mise is correct on CI
+        
+        # Update PATH for CI environment
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+        
+        # Activate mise for the current shell
+        eval "$(~/.local/bin/mise activate bash)"
+        
+        # Verify mise setup
+        mise doctor
 
     - name: Install Tuist CLI  
       run: |
-        # Install Tuist via Mise
+        # Re-export PATH and activate mise in this step
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        cd appstore/
+        
+        # Install Tuist
         mise install tuist
 
-        # Verify Tuist installation
-        tuist --version
+        mise use -g tuist@4.34.3
+
+    - name: Tuist clean
+      run: |
+        cd appstore/
+        
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        tuist clean
 
     - name: Tuist install
       run: |
-        mise x -- tuist install
+        cd appstore/
+
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        tuist install
     
     - name: Tuist build
       run: |
-        mise x -- tuist build
+        cd appstore/
+
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        tuist build
 
     - name: Tuist Test
       run: |
-        mise x -- tuist test
+        cd appstore/
+
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        tuist test
