@@ -31,7 +31,7 @@ jobs:
     - name: Install Tuist CLI  
       run: |
         # Re-export PATH and activate mise in this step
-        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
         
         # Install Tuist
@@ -39,19 +39,19 @@ jobs:
 
     - name: Tuist install
       run: |
-        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
 
         mise x -- tuist install
     
     - name: Tuist build
       run: |
-        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
         mise x -- tuist build
 
     - name: Tuist Test
       run: |
-        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
         mise x -- tuist test
