@@ -9,7 +9,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.ReactiveX",
-            deploymentTargets: .oneVersion(),
+            deploymentTargets: .appVersion,
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [

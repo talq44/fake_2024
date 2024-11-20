@@ -9,7 +9,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.UserAPI",
-            deploymentTargets: .oneVersion(),
+            deploymentTargets: .appVersion,
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [

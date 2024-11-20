@@ -8,7 +8,7 @@
 import ProjectDescription
 
 extension DeploymentTargets {
-    public static func oneVersion() -> DeploymentTargets {
+    public static var appVersion: DeploymentTargets {
         .iOS("16.0")
     }
 }
