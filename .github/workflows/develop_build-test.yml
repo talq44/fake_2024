@@ -37,6 +37,12 @@ jobs:
         # Install Tuist
         mise install tuist
 
+        export PATH="$HOME/.local/share/mise/shims:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
+
+        which mise
+        which tuist
+
         # Verify Tuist installation
         mise x -- tuist version
 
@@ -44,6 +50,7 @@ jobs:
       run: |
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
+
         mise x -- tuist install
     
     - name: Tuist build
