@@ -39,7 +39,7 @@ jobs:
 
         mise use -g tuist@4.34.3
 
-    - name: Tuist install
+    - name: Tuist clean
       run: |
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
