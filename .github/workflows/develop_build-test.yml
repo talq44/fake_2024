@@ -54,7 +54,7 @@ jobs:
     - name: Tuist build
       run: |
         ls
-        cd appstore
+        cd appstore/
         ls
 
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
@@ -64,7 +64,7 @@ jobs:
 
     - name: Tuist Test
       run: |
-        cd appstore
+        cd appstore/
         ls
 
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
