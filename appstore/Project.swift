@@ -1,15 +1,13 @@
 import ProjectDescription
-import ProjectDescriptionHelpers
 
 let project = Project(
-    name: "UserAPI",
+    name: "appstore",
     targets: [
         .target(
-            name: "UserAPI",
+            name: "appstore",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.UserAPI",
-            deploymentTargets: .oneVersion(),
+            bundleId: "io.tuist.appstore",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -18,21 +16,19 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["Sources/**"],
-            dependencies: [
-                .SPM.alamofire,
-                .SPM.moya
-            ]
+            sources: ["appstore/Sources/**"],
+            resources: ["appstore/Resources/**"],
+            dependencies: []
         ),
         .target(
-            name: "UserAPITests",
+            name: "appstoreTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.UserAPITests",
+            bundleId: "io.tuist.appstoreTests",
             infoPlist: .default,
-            sources: ["Tests/**"],
+            sources: ["appstore/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "UserAPI")]
+            dependencies: [.target(name: "appstore")]
         ),
     ]
 )
