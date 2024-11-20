@@ -43,6 +43,12 @@ jobs:
       run: |
         export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
         eval "$(~/.local/bin/mise activate bash)"
+        tuist clean
+
+    - name: Tuist install
+      run: |
+        export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.local/share/mise/plugins/tuist/bin:$PATH"
+        eval "$(~/.local/bin/mise activate bash)"
         tuist install
     
     - name: Tuist build
