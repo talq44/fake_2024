@@ -41,7 +41,7 @@ jobs:
         mise use -g tuist@4.34.3
 
         # Verify Tuist installation
-        tuist --version
+        mise x -- tuist --version
 
     - name: Tuist install
       run: |
