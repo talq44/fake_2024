@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol ViewItemListUseCase {
+    func execute(_ viewItemList: ViewItemList)
+}
