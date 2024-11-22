@@ -8,6 +8,7 @@
 import ProjectDescription
 
 public enum DomainModule: String, CaseIterable {
+	case ScreenViewDomain
     case ProductDetailDomain
     
     public var name: String {
