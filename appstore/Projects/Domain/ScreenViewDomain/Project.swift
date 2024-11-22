@@ -22,6 +22,7 @@ let project = Project.module(
 		.testing(
 			domain: .ScreenViewDomain,
 			dependencies: [
+                .SPM.swinject,
 				.domain(target: .ScreenViewDomain, type: .interface),
 			]
 		),
