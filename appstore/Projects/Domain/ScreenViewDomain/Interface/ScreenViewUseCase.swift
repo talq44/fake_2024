@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol ScreenViewProtocol {
+public protocol ScreenViewUseCase {
     func send(page: Pages, screenAnyClass: AnyClass)
 }
