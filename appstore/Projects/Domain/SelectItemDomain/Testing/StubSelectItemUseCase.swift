@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+import SelectItemDomainInterface
+
+final class StubSelectItemUseCase: SelectItemUseCase {
+    var item: (any SelectItem)?
+    
+    func execute(_ item: any SelectItemDomainInterface.SelectItem) {
+        self.item = item
+    }
+}
