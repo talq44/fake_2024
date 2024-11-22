@@ -14,6 +14,7 @@ let project = Project.module(
 		.implementation(
 			domain: .ScreenViewDomain,
 			dependencies: [
+                .SPM.swinject,
                 .core(target: .AnalyticsCore, type: .interface),
 				.domain(target: .ScreenViewDomain, type: .interface),
 			]
