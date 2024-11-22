@@ -21,9 +21,7 @@ final class ViewItemListDomainTests: XCTestCase {
         // given
         let item_list_id: String = "item_list_id"
         let item_list_name: String = "item_list_name"
-        let items: [Item] = [
-            Item(item_id: "item_id", item_name: "item_name")
-        ]
+        let items = [Item(item_id: "item_id", item_name: "item_name")]
         
         guard let useCase = self.container.build() as? ViewItemListUseCaseImpl else {
             XCTFail("useCase가 성공적으로 생성되지 않았습니다.")
@@ -31,10 +29,10 @@ final class ViewItemListDomainTests: XCTestCase {
         }
         
         // when
-        useCase.execute(ViewItemList(
+        useCase.execute(ViewItemListInput(
+            items: items,
             item_list_id: item_list_id,
-            item_list_name: item_list_name,
-            items: items
+            item_list_name: item_list_name
         ))
         
         // then
