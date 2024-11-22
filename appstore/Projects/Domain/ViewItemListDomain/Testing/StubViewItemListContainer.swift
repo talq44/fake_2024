@@ -7,9 +7,9 @@
 
 import Foundation
 
-import AnalyticsCoreInterface
 import AnalyticsCoreTesting
 import ScreenViewDomainInterface
+import ViewItemListDomainInterface
 
 import Swinject
 
@@ -29,7 +29,7 @@ final class StubViewItemListContainer {
         )
     }
     
-    func build() -> StubViewItmeListUseCase? {
-        return self.container.resolve(StubViewItmeListUseCase.self)
+    func build() -> ViewItemListUseCase? {
+        return self.container.resolve(ViewItemListUseCase.self)
     }
 }
