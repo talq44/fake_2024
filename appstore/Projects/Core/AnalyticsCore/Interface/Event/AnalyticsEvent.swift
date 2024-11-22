@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+public enum AnalyticsEvent: Equatable {
+    /// 목록에서 항목 선택
+    case select_item(SelectItem)
+    /// 항목 노출
+    case view_item(ViewItem)
+    /// 목록 노출
+    case view_item_list(ViewItemList)
+}
