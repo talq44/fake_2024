@@ -30,6 +30,7 @@ let project = Project.module(
 		.tests(
 			domain: .ScreenViewDomain,
 			dependencies: [
+                .core(target: .AnalyticsCore, type: .testing),
 				.domain(target: .ScreenViewDomain, type: .implementation),
 				.domain(target: .ScreenViewDomain, type: .testing),
 			]
