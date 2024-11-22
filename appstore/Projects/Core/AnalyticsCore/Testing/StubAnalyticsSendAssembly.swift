@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+import AnalyticsCoreInterface
+
+import Swinject
+
+final class StubAnalyticsSendAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(
+            AnalyticsSend.self
+        ) { _ in StubAnalyticsSend() }
+    }
+}
