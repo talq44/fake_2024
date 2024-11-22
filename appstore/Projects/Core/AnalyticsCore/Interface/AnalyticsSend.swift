@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol AnlayticsSend {
+public protocol AnalyticsSend {
     func send(_ event: AnalyticsEvent)
 }

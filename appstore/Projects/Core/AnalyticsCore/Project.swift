@@ -19,6 +19,7 @@ let project = Project.module(
             core: .AnalyticsCore,
             dependencies: [
                 .core(target: .AnalyticsCore, type: .interface),
+                .SPM.swinject,
             ]
         ),
         .tests(
