@@ -9,7 +9,7 @@ import Foundation
 
 import AnalyticsCoreInterface
 
-final internal class StubAnalyticsSend: AnlayticsSend {
+final internal class StubAnalyticsSend: AnalyticsSend {
     
     /// 이벤트를 확인하기 위한 내부 값
     internal var event: AnalyticsCoreInterface.AnalyticsEvent?
