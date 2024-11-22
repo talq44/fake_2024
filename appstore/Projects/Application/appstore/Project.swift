@@ -18,8 +18,8 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["appstore/Sources/**"],
-            resources: ["appstore/Resources/**"],
+            sources: ["Sources/**"],
+            resources: ["Resources/**"],
             dependencies: []
         ),
         .target(
@@ -28,7 +28,7 @@ let project = Project(
             product: .unitTests,
             bundleId: "io.tuist.appstoreTests",
             infoPlist: .default,
-            sources: ["appstore/Tests/**"],
+            sources: ["Tests/**"],
             resources: [],
             dependencies: [.target(name: "appstore")]
         ),
