@@ -11,8 +11,9 @@ import AnalyticsCoreInterface
 
 import Swinject
 
-final class StubAnalyticsSendAssembly: Assembly {
-    func assemble(container: Container) {
+final public class StubAnalyticsSendAssembly: Assembly {
+    public init() {}
+    public func assemble(container: Container) {
         container.register(
             AnalyticsSend.self
         ) { _ in StubAnalyticsSend() }
