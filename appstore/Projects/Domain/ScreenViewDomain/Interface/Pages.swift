@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+public enum Pages: String, Equatable {
+    /// 항목 상세 페이지
+    case item_detail
+    /// 검색
+    case search
+}
