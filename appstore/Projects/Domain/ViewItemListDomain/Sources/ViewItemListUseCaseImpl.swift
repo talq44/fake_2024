@@ -11,15 +11,14 @@ import AnalyticsCoreInterface
 import ViewItemListDomainInterface
 
 final class ViewItemListUseCaseImpl: ViewItemListUseCase {
+    
     private let analytics: AnalyticsCoreInterface.AnalyticsSend
     
     init(analytics: AnalyticsCoreInterface.AnalyticsSend) {
         self.analytics = analytics
     }
     
-    func execute(
-        _ viewItemList: ViewItemListDomainInterface.ViewItemList
-    ) {
+    func execute(_ viewItemList: any ViewItemListDomainInterface.ViewItemList) {
         // 0개면 보내지 않는다.
         guard viewItemList.items.count > 0 else {
             return
