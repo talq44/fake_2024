@@ -9,7 +9,7 @@ import Foundation
 
 /// View Item List event. Log this event when a user sees a list of items or offerings
 /// - firebase: https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event#VIEW_ITEM_LIST()
-public struct ViewItemList: Codable {
+public struct ViewItemList: Codable, Equatable {
     
     public let item_list_id: String
     public let item_list_name: String
