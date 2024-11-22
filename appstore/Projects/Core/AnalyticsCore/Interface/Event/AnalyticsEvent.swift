@@ -8,6 +8,8 @@
 import Foundation
 
 public enum AnalyticsEvent: Equatable {
+    /// 화면 노출
+    case screen_view(ScreenView)
     /// 목록에서 항목 선택
     case select_item(SelectItem)
     /// 항목 노출
