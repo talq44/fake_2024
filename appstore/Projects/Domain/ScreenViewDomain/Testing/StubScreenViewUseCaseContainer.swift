@@ -29,10 +29,9 @@ final class StubScreenViewUseCaseContainer {
         )
     }
     
-    func build() -> StubScreenViewOutput? {
+    func build() -> StubScreenViewOutput {
         return StubScreenViewOutput(
-            useCase: self.container.resolve(ScreenViewUseCase.self),
-            analytics: self.container.resolve(StubAnalyticsSend.self)
+            useCase: self.container.resolve(ScreenViewUseCase.self)
         )
     }
 }

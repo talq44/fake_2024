@@ -11,6 +11,5 @@ import AnalyticsCoreTesting
 import ScreenViewDomainInterface
 
 struct StubScreenViewOutput {
-    public let useCase: ScreenViewUseCase?
-    public let analytics: AnalyticsCoreTesting.StubAnalyticsSend?
+    let useCase: ScreenViewUseCase?
 }
