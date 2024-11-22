@@ -7,12 +7,7 @@
 
 import Foundation
 
-public struct Item {
-    public let item_id: String
-    public let item_name: String
-    
-    public init(item_id: String, item_name: String) {
-        self.item_id = item_id
-        self.item_name = item_name
-    }
+public protocol Item {
+    var item_id: String { get }
+    var item_name: String { get }
 }

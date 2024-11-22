@@ -7,14 +7,8 @@
 
 import Foundation
 
-public struct ViewItemList {
-    public let items: [Item]
-    public let item_list_id: String
-    public let item_list_name: String
-    
-    public init(items: [Item], item_list_id: String, item_list_name: String) {
-        self.items = items
-        self.item_list_id = item_list_id
-        self.item_list_name = item_list_name
-    }
+public protocol ViewItemList {
+    var items: [Item] { get }
+    var item_list_id: String { get }
+    var item_list_name: String { get }
 }
