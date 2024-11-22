@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol ScreenViewProtocol {
+    func send(page: Pages, screenAnyClass: AnyClass)
+}
