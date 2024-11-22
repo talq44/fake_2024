@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol SelectItemUseCase {
+    func execute(_ item: SelectItem)
+}
