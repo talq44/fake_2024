@@ -9,12 +9,12 @@ import Foundation
 
 import AnalyticsCoreInterface
 
-final internal class StubAnalyticsSend: AnalyticsSend {
+final public class StubAnalyticsSend: AnalyticsSend {
     
     /// 이벤트를 확인하기 위한 내부 값
     internal var event: AnalyticsCoreInterface.AnalyticsEvent?
     
-    func send(_ event: AnalyticsCoreInterface.AnalyticsEvent) {
+    public func send(_ event: AnalyticsCoreInterface.AnalyticsEvent) {
         self.event = event
     }
 }
