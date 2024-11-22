@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol ScreenViewUseCase {
-    func send(page: Pages, screenAnyClass: AnyClass)
+    func execute(page: Pages, screenAnyClass: AnyClass)
 }
