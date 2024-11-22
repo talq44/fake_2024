@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+import ScreenViewDomainInterface
+
+final class StubScreenViewUseCase: ScreenViewUseCase {
+    var page: ScreenViewDomainInterface.Pages?
+    var screenAnyClass: AnyClass?
+    
+    func execute(
+        page: ScreenViewDomainInterface.Pages,
+        screenAnyClass: AnyClass
+    ) {
+        self.page = page
+        self.screenAnyClass = screenAnyClass
+    }
+}
