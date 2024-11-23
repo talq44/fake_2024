@@ -15,7 +15,7 @@ struct SearchListEntity {
     let statusCode: Int?
     
     struct Item: SearchListItem {
-        let id: String
+        let id: Int
         let name: String
         let averageUserRating: Double
         let userRatingCount: Int

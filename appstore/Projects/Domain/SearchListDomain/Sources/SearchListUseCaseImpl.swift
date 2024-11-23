@@ -26,12 +26,18 @@ final class SearchListUseCaseImpl: SearchListUseCase {
     func execute(
         _ input: any SearchListInput
     ) async -> Result<any SearchListOutput, SearchListError> {
+        guard input.term.count > 0 else {
+            return .failure(.restError(statusCode: 400))
+        }
+        
         var page = self.page
         switch input.isMore {
-        case true:
+            // fetch
+        case false:
             page = 1
             
-        case false:
+            // more
+        case true:
             guard page > 0 else {
                 return .failure(.fetchRequiredBeforeMore)
             }

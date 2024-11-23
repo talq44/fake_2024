@@ -29,5 +29,6 @@ let package = Package(
         .package(url: "https://github.com/Quick/nimble.git", .upToNextMajor(from: "13.6.2")),
         .package(url: "https://github.com/RxSwiftCommunity/RxGesture.git", .upToNextMajor(from: "4.0.4")),
         .package(url: "https://github.com/Swinject/Swinject.git", from: "2.9.1"),
+        .package(url: "https://github.com/vadymmarkov/Fakery", from: "5.0.0"),
     ]
 )
