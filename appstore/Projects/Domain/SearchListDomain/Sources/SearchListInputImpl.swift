@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+import SearchListDomainInterface
+
+struct SearchListInputImpl: SearchListInput {
+    let term: String
+    let isMore: Bool
+}
