@@ -22,5 +22,5 @@ public struct SearchResultDTO: Decodable {
     
     public let screenshotUrls: [String]
     /// ["금융", "라이프스타일"]
-    public let genres: [String]
+    public let genres: [String]?
 }
