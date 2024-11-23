@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol SearchListRepository {
+    func request(_ request: SearchListRequest) async -> SearchListEntity?
+}
