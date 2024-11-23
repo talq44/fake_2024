@@ -13,38 +13,46 @@ extension SearchResponseDTO {
     static func mockJson() -> String {
         return """
         {
-            "resultCount": 2,
-            "results": [
-                {
-                    "artworkUrl60": "https://example.com/artwork60_1.png",
-                    "artworkUrl512": "https://example.com/artwork512_1.png",
-                    "artworkUrl100": "https://example.com/artwork100_1.png",
-                    "trackName": "Mock App 1",
-                    "trackId": 123456,
-                    "averageUserRating": 4.5,
-                    "userRatingCount": 1024,
-                    "screenshotUrls": [
-                        "https://example.com/screenshot1_1.png",
-                        "https://example.com/screenshot1_2.png"
-                    ]
-                },
-                {
-                    "artworkUrl60": "https://example.com/artwork60_2.png",
-                    "artworkUrl512": "https://example.com/artwork512_2.png",
-                    "artworkUrl100": "https://example.com/artwork100_2.png",
-                    "trackName": "Mock App 2",
-                    "trackId": 789101,
-                    "averageUserRating": 4.7,
-                    "userRatingCount": 2048,
-                    "screenshotUrls": [
-                        "https://example.com/screenshot2_1.png",
-                        "https://example.com/screenshot2_2.png",
-                        "https://example.com/screenshot2_3.png"
-                    ]
-                }
-            ]
+          "resultCount": 2,
+          "results": [
+            {
+              "artworkUrl60": "https://example.com/artwork60.jpg",
+              "artworkUrl512": "https://example.com/artwork512.jpg",
+              "artworkUrl100": "https://example.com/artwork100.jpg",
+              "trackName": "Example Finance App",
+              "trackId": 123456789,
+              "sellerName": "Example Seller",
+              "averageUserRating": 4.5,
+              "userRatingCount": 1500,
+              "screenshotUrls": [
+                "https://example.com/screenshot1.jpg",
+                "https://example.com/screenshot2.jpg"
+              ],
+              "genres": [
+                "금융",
+                "라이프스타일"
+              ]
+            },
+            {
+              "artworkUrl60": "https://example.com/artwork60_2.jpg",
+              "artworkUrl512": "https://example.com/artwork512_2.jpg",
+              "artworkUrl100": "https://example.com/artwork100_2.jpg",
+              "trackName": "Lifestyle Tracker",
+              "trackId": 987654321,
+              "sellerName": "Lifestyle Inc.",
+              "averageUserRating": 4.7,
+              "userRatingCount": 2500,
+              "screenshotUrls": [
+                "https://example.com/screenshot3.jpg",
+                "https://example.com/screenshot4.jpg"
+              ],
+              "genres": [
+                "라이프스타일",
+                "생산성"
+              ]
+            }
+          ]
         }
-        
         """
     }
 }
