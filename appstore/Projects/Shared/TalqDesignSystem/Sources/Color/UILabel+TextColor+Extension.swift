@@ -5,4 +5,10 @@
 //  Created by 박창규 on 11/24/24.
 //
 
-import Foundation
+import UIKit
+
+public extension UILabel {
+    func color(textColor: TextColor) {
+        self.textColor = textColor.color
+    }
+}
