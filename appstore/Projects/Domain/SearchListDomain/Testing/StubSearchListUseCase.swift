@@ -16,6 +16,9 @@ final class StubSearchListUseCase: SearchListUseCase {
     func execute(
         _ input: any SearchListInput
     ) async -> Result<SearchListOutput, SearchListError> {
-        
+        let items = Array(1...count).map { id in
+            StubSearchListItem(id: id)
+        }
+        return .success(StubSearchListOutput(items: items))
     }
 }
