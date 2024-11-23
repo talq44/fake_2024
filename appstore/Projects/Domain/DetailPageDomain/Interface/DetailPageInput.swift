@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol DetailPageInput {
-    var id: String { get }
+    var id: Int { get }
 }
