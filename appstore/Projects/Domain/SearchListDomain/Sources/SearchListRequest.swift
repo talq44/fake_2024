@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct SearchListRequest {
+    let query: String
+    let limit: Int
+    let offset: Int
+}
