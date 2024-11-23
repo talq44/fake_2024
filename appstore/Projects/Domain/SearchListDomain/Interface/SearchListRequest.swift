@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public protocol SearchListRequest {
+    /// 검색어
+    var term: String { get }
+}

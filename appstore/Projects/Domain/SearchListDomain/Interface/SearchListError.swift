@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public enum SearchListError: Error, Equatable {
+    case restError(statusCode: Int)
+    case unDefined
+}
