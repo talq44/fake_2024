@@ -14,12 +14,14 @@ let project = Project.module(
             dependencies: [
                 .core(target: .UserAPICore, type: .interface),
                 .SPM.moya,
-                .SPM.alamofire
+                .SPM.alamofire,
+                .SPM.swinject,
             ]
         ),
         .testing(
             core: .UserAPICore,
             dependencies: [
+                .SPM.swinject,
                 .core(target: .UserAPICore, type: .interface),
             ]
         ),
