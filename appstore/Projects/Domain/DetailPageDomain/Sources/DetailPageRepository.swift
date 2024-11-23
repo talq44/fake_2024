@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+internal protocol DetailPageRepository {
+    func request(_ id: Int) async -> DetailPageEntity?
+}
