@@ -23,6 +23,7 @@ let project = Project.module(
                 .domain(target: .SearchListDomain, type: .interface),
                 .core(target: .UserAPICore, type: .testing),
                 .SPM.swinject,
+                .SPM.fakery,
             ]
         ),
         .tests(
