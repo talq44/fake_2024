@@ -8,6 +8,7 @@
 import ProjectDescription
 
 public enum CoreModule: String, CaseIterable {
+	case UserAPICore
 	case AnalyticsCore
     
     public var name: String {
