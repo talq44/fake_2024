@@ -30,6 +30,7 @@ let project = Project.module(
             dependencies: [
                 .core(target: .UserAPICore, type: .implementation),
                 .core(target: .UserAPICore, type: .testing),
+                .core(target: .UserAPICore, type: .interface),
             ]
         ),
     ]
