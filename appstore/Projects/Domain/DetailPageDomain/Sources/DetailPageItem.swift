@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+import DetailPageDomainInterface
+
+struct DetailPageItem: DetailPageOutput {
+    let id: String
+    let name: String
+    let thumbnailURL: String
+    let salesName: String
+    let description: String
+}
