@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Constants {
+    static var baseURL: String = "https://api.user.com"
+}
