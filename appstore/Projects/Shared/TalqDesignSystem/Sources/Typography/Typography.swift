@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import UIKit
+
+public enum Typography {
+    case title
+    case body
+    case heading
+    
+//    var size: UIFont {
+//        switch self {
+//        case .title:
+//            return UIFont.TextStyle.title1.rawValue.withCString { UIFont(name: String(cString: $0), size: 24) ?? <#default value#> }
+//        case .body:
+//            <#code#>
+//        case .heading:
+//            <#code#>
+//        }
+//    }
+}
