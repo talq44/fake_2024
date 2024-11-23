@@ -11,17 +11,10 @@ let project = Project.module(
                 
             ]
         ),
-        .testing(
-            shared: .TalqDesignSystem,
-            dependencies: [
-                .shared(target: .TalqDesignSystem, type: .interface),
-            ]
-        ),
         .tests(
             shared: .TalqDesignSystem,
             dependencies: [
                 .shared(target: .TalqDesignSystem, type: .implementation),
-                .shared(target: .TalqDesignSystem, type: .testing),
             ]
         ),
     ]
