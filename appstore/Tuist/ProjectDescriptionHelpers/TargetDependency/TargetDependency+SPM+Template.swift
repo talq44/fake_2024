@@ -33,5 +33,6 @@ public extension TargetDependency {
         public static let quick: TargetDependency = .external(name: "Quick")
         public static let nimble: TargetDependency = .external(name: "Nimble")
         public static let snapshotTesting: TargetDependency = .external(name: "SnapshotTesting")
+        public static let fakery: TargetDependency = .external(name: "Fakery")
     }
 }
