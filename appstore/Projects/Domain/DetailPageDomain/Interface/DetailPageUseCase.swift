@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public protocol DetailPageUseCase {
+    func execute(
+        _ input: DetailPageInput
+    ) async -> Result<DetailPageOutput, DetailPageError>
+}

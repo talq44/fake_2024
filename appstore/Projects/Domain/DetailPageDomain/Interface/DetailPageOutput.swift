@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+public protocol DetailPageOutput {
+    var id: String { get }
+    var name: String { get }
+    var thumbnailURL: String { get }
+    var salesName: String  { get }
+    
+    var description: String { get }
+}

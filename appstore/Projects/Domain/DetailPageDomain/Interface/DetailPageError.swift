@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public enum DetailPageError: Error, Equatable {
+    case rest(statusCode: Int)
+    case undefined
+}
