@@ -80,4 +80,19 @@ final class UserAPICoreTests: XCTestCase {
         // then
         XCTAssertTrue(response.results.count == 0)
     }
+    
+    func test_given_검색어_선택_when_post_get_then_검색한검색어가존재() async throws {
+        // given
+        let term: String = "검색어 선택"
+        
+        // when
+        self.userAPI.post_searchs_word(word: term)
+        let response = try await self.userAPI.get_searchs_word()
+        
+        // then
+        XCTAssertTrue(
+            response.contains(term),
+            "검색을 실행했던 값은 리스트에 포함되어야 합니다."
+        )
+    }
 }
