@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol UseAPICore {
+public protocol UserAPICore {
     func get_search(
         request: SearchRequestDTO
     ) async throws -> SearchResponseDTO
