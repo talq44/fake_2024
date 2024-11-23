@@ -18,8 +18,6 @@ public struct LookupResultDTO: Decodable {
     public let artworkUrl100: String?
     /// 개발자 프로필 URL
     public let artistViewUrl: String?
-    /// 지원되는 디바이스 리스트
-    public let supportedDevices: [String]
     /// 앱에 적용된 권고사항 리스트 (예: 연령제한)
     public let advisories: [String]
     /// 앱 종류 (예: software)
