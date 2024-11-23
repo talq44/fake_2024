@@ -8,7 +8,7 @@
 import Foundation
 
 /// 실제 사용되는 간격
-/// best 한건 Token뒤에 실제 사이즈가 숨기는것임으로 노출하지 않습니다.
+/// Token뒤에 실제 사이즈가 숨기는것임으로 노출하지 않습니다.
 enum SpacingSize: CGFloat {
     case Spacing_xxxs = 2
     case Spacing_xxs = 4
