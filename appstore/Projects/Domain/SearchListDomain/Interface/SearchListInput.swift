@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol SearchListRequest {
+public protocol SearchListInput {
     /// 검색어
     var term: String { get }
 }

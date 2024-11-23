@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol SearchListResponse {
+public protocol SearchListOutput {
     var items: [SearchListItem] { get }
 }
