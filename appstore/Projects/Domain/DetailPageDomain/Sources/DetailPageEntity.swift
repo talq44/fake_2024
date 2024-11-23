@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+struct DetailPageEntity {
+    let items: [DetailPageItem]
+    
+    let statusCode: Int?
+    
+    init(items: [DetailPageItem]) {
+        self.items = items
+        self.statusCode = nil
+    }
+    
+    init (statusCode: Int) {
+        self.items = []
+        self.statusCode = statusCode
+    }
+}
