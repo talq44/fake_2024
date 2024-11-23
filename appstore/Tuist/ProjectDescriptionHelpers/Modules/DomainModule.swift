@@ -8,9 +8,9 @@
 import ProjectDescription
 
 public enum DomainModule: String, CaseIterable {
-	case ViewItemListDomain
+    case SelectItemDomain
 	case ScreenViewDomain
-    case ProductDetailDomain
+    case ViewItemListDomain
     
     public var name: String {
         self.rawValue
