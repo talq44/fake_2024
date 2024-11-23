@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public protocol SearchListUseCase {
+    func execute(
+        _ request: SearchListRequest
+    ) async -> Result<SearchListResponse, SearchListError>
+}
