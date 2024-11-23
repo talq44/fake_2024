@@ -14,10 +14,13 @@ public struct SearchResultDTO: Decodable {
     
     public let trackName: String
     public let trackId: Int
-
+    public let sellerName: String?
+    
     public let averageUserRating: Double
-
+    
     public let userRatingCount: Int
     
     public let screenshotUrls: [String]
+    /// ["금융", "라이프스타일"]
+    public let genres: [String]
 }
