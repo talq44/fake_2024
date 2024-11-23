@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public struct LookupResponseDTO: Decodable {
     public let resultCount: Int
     public let results: [LookupResultDTO]
