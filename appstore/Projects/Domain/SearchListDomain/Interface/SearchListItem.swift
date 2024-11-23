@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol SearchListItem {
-    var id: String { get }
+    var id: Int { get }
     var name: String { get }
     var averageUserRating: Double { get }
     var userRatingCount: Int { get }

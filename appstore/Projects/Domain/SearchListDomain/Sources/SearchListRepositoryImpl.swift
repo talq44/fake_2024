@@ -39,7 +39,7 @@ final class SearchListRepositoryImpl: SearchListRepository {
             totalCount: response.resultCount,
             items: response.results.map({ item in
                 SearchListEntity.Item(
-                    id: "\(item.trackId)",
+                    id: item.trackId,
                     name: item.trackName,
                     averageUserRating: item.averageUserRating,
                     userRatingCount: item.userRatingCount,
