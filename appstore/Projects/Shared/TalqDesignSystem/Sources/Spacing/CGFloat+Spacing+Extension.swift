@@ -11,4 +11,6 @@ public extension CGFloat {
     static var horizontalMargin: CGFloat { Spacing.horizontalMargin.size }
     static var leftMargin: CGFloat { Spacing.leftMargin.size }
     static var rightMargin: CGFloat { Spacing.rightMargin.size }
+    static var itemSpacing: CGFloat { Spacing.itemSpacing.size }
+    static var itemRound: CGFloat { Spacing.itemRound.size }
 }
