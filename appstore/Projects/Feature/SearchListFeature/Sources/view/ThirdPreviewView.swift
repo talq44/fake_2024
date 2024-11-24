@@ -7,11 +7,13 @@
 
 import UIKit
 
+import TalqDesignSystem
+
 class ThirdPreviewView: UIView {
     enum Metric {
-        static let horizontalInset: CGFloat = 16
-        static let spacing: CGFloat = 8
-        static let round: CGFloat = 5
+        static let horizontalInset: CGFloat = .horizontalMargin
+        static let spacing: CGFloat = .itemSpacing
+        static let round: CGFloat = .itemRound
     }
     
     private let stackView = UIStackView()
