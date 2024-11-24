@@ -17,6 +17,9 @@ import PackageDescription
 
 let package = Package(
     name: "appstore",
+    platforms: [
+        .iOS(.v17)
+    ],
     dependencies: [
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.7.1")),
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "8.1.1")),
