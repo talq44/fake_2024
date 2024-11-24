@@ -13,8 +13,10 @@ let project = Project.module(
             feature: .SearchListFeature,
             dependencies: [
                 .SPM.swinject,
+                .SPM.snapKit,
                 .feature(target: .SearchListFeature, type: .interface),
                 .domain(target: .SearchListDomain, type: .interface),
+                .shared(target: .TalqDesignSystem, type: .implementation),
             ]
         ),
         .testing(
