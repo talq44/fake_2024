@@ -8,8 +8,7 @@
 import ProjectDescription
 
 public enum FeatureModule: String, CaseIterable {
-    case SearchListFeature
-    case ItemDetailFeature
+	case SearchListFeature
     
     public var name: String {
         self.rawValue
