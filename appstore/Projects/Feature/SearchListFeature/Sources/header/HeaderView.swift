@@ -28,15 +28,16 @@ class HeaderView: UIView {
     private let thumbnail = UIImageView()
     // 가운데 영역
     private let centerStackView = UIStackView()
-    private let titleLabel = UILabel()
-    private let captionLabel = UILabel()
+    private let titleLabel = HDSLabel(textStyle: .headline)
+    private let captionLabel = HDSLabel(textStyle: .caption1)
     // 오른쪽 영역
     private let trailingStackView = UIStackView()
     private let downButton = UIButton(configuration: .gray())
-    private let guirdeLabel = UILabel()
+    private let inAppPurchaseLabel = HDSLabel(textStyle: .caption2)
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
+        self.initView()
     }
     
     required init?(coder: NSCoder) {
@@ -54,23 +55,29 @@ class HeaderView: UIView {
         self.stackView.alignment = .center
         self.stackView.distribution = .fill
         
+        self.centerStackView.axis = .vertical
+        self.trailingStackView.axis = .vertical
         self.centerStackView.spacing = Metric.detailItemSpacing
         self.trailingStackView.spacing = Metric.detailItemSpacing
+        self.trailingStackView.alignment = .center
         
         self.stackView.addArrangedSubview(self.thumbnail)
         self.stackView.addArrangedSubview(self.centerStackView)
         centerStackView.addArrangedSubview(titleLabel)
         centerStackView.addArrangedSubview(captionLabel)
+        self.stackView.addArrangedSubview(UIView())
         self.stackView.addArrangedSubview(self.trailingStackView)
         trailingStackView.addArrangedSubview(downButton)
-        trailingStackView.addArrangedSubview(guirdeLabel)
+        trailingStackView.addArrangedSubview(inAppPurchaseLabel)
         
-        self.addConfigureLabels()
+        self.addConfigureImages()
+        self.inAppPurchaseLabel.text = "앱 내 구입"
+        self.downButton.setTitle("받기", for: .normal)
     }
     
-    private func addConfigureLabels() {
-        titleLabel.font = .preferredFont(forTextStyle: .title3)
-        captionLabel.font = .preferredFont(forTextStyle: .caption1)
+    private func addConfigureImages() {
+        self.thumbnail.clipsToBounds = true
+        self.thumbnail.layer.cornerRadius = Metric.radius
     }
     
     private func makeConstraints() {
@@ -84,4 +91,17 @@ class HeaderView: UIView {
             $0.size.equalTo(Metric.imageSize)
         }
     }
+    
+    func bind(state: State) {
+        self.thumbnail.kf.setImage(with: URL(string: state.imageURL))
+        self.titleLabel.text = state.name
+        self.captionLabel.text = state.description
+        self.inAppPurchaseLabel.isHidden = !state.isInAppPurchase
+    }
+}
+
+#Preview() {
+    let view = HeaderView()
+    view.bind(state: .mock(isInAppPurchase: true))
+    return view
 }
