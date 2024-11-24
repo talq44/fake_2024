@@ -14,6 +14,7 @@ let project = Project.module(
             dependencies: [
                 .SPM.swinject,
                 .SPM.snapKit,
+                .SPM.kingfisher,
                 .feature(target: .SearchListFeature, type: .interface),
                 .domain(target: .SearchListDomain, type: .interface),
                 .shared(target: .TalqDesignSystem, type: .implementation),
@@ -42,5 +43,16 @@ let project = Project.module(
                 .feature(target: .SearchListFeature, type: .testing),
             ]
         ),
+        .preview(
+            feature: .SearchListFeature,
+            dependencies: [
+                .SPM.swinject,
+                .SPM.snapKit,
+                .SPM.kingfisher,
+                .feature(target: .SearchListFeature, type: .interface),
+                .domain(target: .SearchListDomain, type: .interface),
+                .shared(target: .TalqDesignSystem, type: .implementation),
+            ]
+        )
     ]
 )
