@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum TextColor {
+public enum TextColor: CaseIterable {
     case primary
     case secondary
     case tertiary
