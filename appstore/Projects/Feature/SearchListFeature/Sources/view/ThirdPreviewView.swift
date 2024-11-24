@@ -45,6 +45,7 @@ class ThirdPreviewView: UIView {
         self.stackView.spacing = Metric.spacing
         self.stackView.axis = .horizontal
         self.stackView.distribution = .fillEqually
+        self.stackView.alignment = .center
         self.stackView.addArrangedSubview(imageView01)
         self.stackView.addArrangedSubview(imageView02)
         self.stackView.addArrangedSubview(imageView03)
@@ -67,19 +68,27 @@ class ThirdPreviewView: UIView {
     }
     
     internal func bind(state: State) {
-        self.imageView01.kf.setImage(with: URL(string: state.previewURL01 ?? ""))
-        self.imageView02.kf.setImage(with: URL(string: state.previewURL02 ?? ""))
-        self.imageView03.kf.setImage(with: URL(string: state.previewURL03 ?? ""))
+        self.imageView01.kf.setImage(
+            with: URL(string: state.previewURL01 ?? "")
+        )
+        self.imageView02.kf.setImage(
+            with: URL(string: state.previewURL02 ?? "")
+        )
+        self.imageView03.kf.setImage(
+            with: URL(string: state.previewURL03 ?? "")
+        )
     }
 }
 
 #Preview("", body: {
+    let contentView = UIView()
     let view = ThirdPreviewView(
         frame: CGRect(
-            origin: CGPointZero,
-            size: CGSize(width: 392, height: 696)
+            origin: CGPoint(x: 0, y: 80),
+            size: CGSize(width: 392, height: 696 / 3)
         )
     )
     view.bind(state: .mock)
-    return view
+    contentView.addSubview(view)
+    return contentView
 })
