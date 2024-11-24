@@ -14,4 +14,5 @@ public extension CGFloat {
     static var itemSpacing: CGFloat { Spacing.itemSpacing.size }
     static var itemRound: CGFloat { Spacing.itemRound.size }
     static var itemBorder: CGFloat { 2 }
+    static var detailItemSpacing: CGFloat { 4 }
 }
