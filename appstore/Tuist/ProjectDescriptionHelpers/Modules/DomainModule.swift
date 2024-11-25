@@ -8,6 +8,7 @@
 import ProjectDescription
 
 public enum DomainModule: String, CaseIterable {
+	case ViewItemDomain
 	case DetailPageDomain
 	case SearchListDomain
     case SelectItemDomain
