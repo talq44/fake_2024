@@ -7,11 +7,7 @@ import PackageDescription
     let packageSettings = PackageSettings(
         productTypes: [
             "Swinject":. framework,
-        ],
-        baseSettings: .settings(configurations: [
-            .debug(name: "DEV"),
-            .release(name: "RELEASE")
-        ])
+        ]
     )
 #endif
 
