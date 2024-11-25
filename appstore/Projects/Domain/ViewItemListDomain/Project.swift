@@ -20,9 +20,8 @@ let project = Project.module(
 		.testing(
 			domain: .ViewItemListDomain,
 			dependencies: [
-                .SPM.swinject,
-                .core(target: .AnalyticsCore, type: .testing),
 				.domain(target: .ViewItemListDomain, type: .interface),
+                .core(target: .AnalyticsCore, type: .interface),
 			]
 		),
 		.tests(
