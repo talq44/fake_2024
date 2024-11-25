@@ -8,6 +8,7 @@
 import ProjectDescription
 
 public enum SharedModule: String, CaseIterable {
+	case ErrorShared
 	case TalqDesignSystem
     
     public var name: String {
