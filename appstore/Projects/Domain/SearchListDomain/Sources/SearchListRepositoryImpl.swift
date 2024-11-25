@@ -7,6 +7,7 @@
 
 import Foundation
 
+import SearchListDomainInterface
 import UserAPICoreInterface
 
 final class SearchListRepositoryImpl: SearchListRepository {
@@ -16,7 +17,9 @@ final class SearchListRepositoryImpl: SearchListRepository {
         self.dataSource = dataSource
     }
     
-    func request(_ request: SearchListRequest) async -> SearchListEntity? {
+    func request(
+        _ request: any SearchListRequest
+    ) async -> Result<any SearchListEntity, SearchListError> {
         do {
             let request = SearchRequestDTO(
                 term: request.query,
@@ -24,21 +27,21 @@ final class SearchListRepositoryImpl: SearchListRepository {
                 offset: request.offset
             )
             let response = try await dataSource.get_search(request: request)
-            return self.toEntity(response: response)
+            return .success(self.toEntity(response: response))
+            
         } catch {
             guard let apiError = error as? UserAPICoreError else {
-                return nil
+                return .failure(.unDefined)
             }
-            
-            return SearchListEntity(statusCode: apiError.statusCode)
+            return .failure(.restError(statusCode: apiError.statusCode))
         }
     }
     
     private func toEntity(response: SearchResponseDTO) -> SearchListEntity {
-        SearchListEntity(
+        SearchListEntityImpl(
             totalCount: response.resultCount,
             items: response.results.map({ item in
-                SearchListEntity.Item(
+                return SearchListEntityImpl.Item(
                     id: item.trackId,
                     name: item.trackName,
                     averageUserRating: item.averageUserRating,

@@ -9,12 +9,11 @@ import Foundation
 
 import SearchListDomainInterface
 
-struct SearchListEntity {
+struct SearchListEntityImpl: SearchListEntity {
     let totalCount: Int
-    let items: [Item]
-    let statusCode: Int?
+    var items: [any SearchListDomainInterface.SearchListItem]
     
-    struct Item: SearchListItem {
+    struct Item: SearchListDomainInterface.SearchListItem {
         let id: Int
         let name: String
         let averageUserRating: Double
@@ -24,16 +23,5 @@ struct SearchListEntity {
         let thumbnailURL: String?
         let screenshotUrls: [String]
     }
-    
-    init(totalCount: Int, items: [Item]) {
-        self.totalCount = totalCount
-        self.items = items
-        self.statusCode = nil
-    }
-    
-    init (statusCode: Int) {
-        self.totalCount = 0
-        self.items = []
-        self.statusCode = statusCode
-    }
 }
+

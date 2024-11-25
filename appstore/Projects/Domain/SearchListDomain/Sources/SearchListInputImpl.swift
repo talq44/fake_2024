@@ -12,4 +12,9 @@ import SearchListDomainInterface
 struct SearchListInputImpl: SearchListInput {
     let term: String
     let isMore: Bool
+    
+    init(term: String, isMore: Bool = false) {
+        self.term = term
+        self.isMore = isMore
+    }
 }

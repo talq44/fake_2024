@@ -5,28 +5,27 @@ import XCTest
 
 final class SearchListDomainTests: XCTestCase {
     
-    private var container: StubSearchListContainer!
+    private var repository: StubRepository!
+    private var sut: SearchListUseCaseImpl!
     
     override func setUpWithError() throws {
-        self.container = StubSearchListContainer(
-            assembly: SearchListDomainAssembly()
+        self.repository = StubRepository()
+        self.sut = SearchListUseCaseImpl(
+            repository: self.repository
         )
     }
 
     override func tearDownWithError() throws {
-        self.container = nil
+        self.repository = nil
+        self.sut = nil
     }
 
     func test_given_normal_when_execute_fetch_then_hasItems() async throws {
         // given
         let term: String = "검색어"
-        guard let useCase = self.container.build() as? SearchListUseCaseImpl else {
-            XCTFail("usecase 생성에 실패했습니다.")
-            return
-        }
         
         // when
-        let response = await useCase.execute(SearchListInputImpl(
+        let response = await self.sut.execute(SearchListInputImpl(
             term: term,
             isMore: false
         ))
@@ -44,13 +43,9 @@ final class SearchListDomainTests: XCTestCase {
     func test_given_normal_when_execute_more_then_hasItems() async throws {
         // given
         let term: String = "검색어"
-        guard let useCase = self.container.build() as? SearchListUseCaseImpl else {
-            XCTFail("usecase 생성에 실패했습니다.")
-            return
-        }
         
         // when
-        let response = await useCase.execute(SearchListInputImpl(
+        let response = await sut.execute(SearchListInputImpl(
             term: term,
             isMore: true
         ))
@@ -68,16 +63,62 @@ final class SearchListDomainTests: XCTestCase {
         }
     }
     
+    func test_given_error_when_execute_fetch_then_error() async throws {
+        // given
+        let term: String = "검색어"
+        let isError: Bool = true
+        self.repository.isError = isError
+        
+        // when
+        let response = await sut.execute(SearchListInputImpl(
+            term: term
+        ))
+        
+        // then
+        switch response {
+        case .success:
+            XCTFail("repository에서 Error가 발생한다면, usecase에서도 에러가 발생해야합니다.")
+            
+        case .failure:
+            XCTAssertTrue(
+                true,
+                "repository에서 Error가 발생한다면, usecase에서도 에러가 발생해야합니다."
+            )
+        }
+    }
+    
+    func test_given_items20_when_execute_fetch_then_items_20() async throws {
+        // given
+        let term: String = "검색어"
+        let count: Int = 20
+        
+        self.repository.isError = false
+        self.repository.count = count
+        
+        // when
+        let response = await sut.execute(SearchListInputImpl(
+            term: term
+        ))
+        
+        // then
+        switch response {
+        case .success(let success):
+            XCTAssertTrue(
+                success.items.count == count,
+                "repository에서 발생한 값과 거의 같은 값을 얻습니다."
+            )
+            
+        case .failure(let error):
+            XCTFail("repository에서 발생한 값과 거의 같은 값을 얻습니다.")
+        }
+    }
+    
     func test_given_term_empty_when_execute_more_then_error() async throws {
         // given
         let term: String = ""
-        guard let useCase = self.container.build() as? SearchListUseCaseImpl else {
-            XCTFail("usecase 생성에 실패했습니다.")
-            return
-        }
         
         // when
-        let response = await useCase.execute(SearchListInputImpl(
+        let response = await self.sut.execute(SearchListInputImpl(
             term: term,
             isMore: true
         ))

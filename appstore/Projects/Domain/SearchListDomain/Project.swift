@@ -20,10 +20,9 @@ let project = Project.module(
         .testing(
             domain: .SearchListDomain,
             dependencies: [
-                .domain(target: .SearchListDomain, type: .interface),
-                .core(target: .UserAPICore, type: .testing),
-                .SPM.swinject,
                 .SPM.fakery,
+                .domain(target: .SearchListDomain, type: .interface),
+                .core(target: .UserAPICore, type: .interface),
             ]
         ),
         .tests(

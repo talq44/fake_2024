@@ -48,28 +48,25 @@ final class SearchListUseCaseImpl: SearchListUseCase {
             return .success(SearchListOutputImpl(items: []))
         }
         
-        let request = SearchListRequest(
+        let request = SearchListRequestImpl(
             query: input.term,
             limit: Constants.pageSize,
             offset: self.page * Constants.pageSize
         )
         
-        let entity = await self.repository.request(request)
+        let response = await self.repository.request(request)
         
-        guard let entity = entity else {
-            return .failure(.unDefined)
-        }
-        
-        guard entity.statusCode == nil else {
-            guard let statusCode = entity.statusCode else {
-                return .failure(.unDefined)
-            }
+        switch response {
+        case .success(let success):
+            self.totalCount = success.totalCount
+            self.page = page
             
-            return .failure(.restError(statusCode: statusCode))
+            return .success(SearchListOutputImpl(
+                items: success.items
+            ))
+            
+        case .failure(let failure):
+            return .failure(failure)
         }
-        
-        self.totalCount = entity.totalCount
-        self.page = page
-        return .success(SearchListOutputImpl(items: entity.items))
     }
 }
