@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+import AnalyticsCoreInterface
+
+final class StubAnalyticsCore: AnalyticsSend {
+    var sendEvent: AnalyticsCoreInterface.AnalyticsEvent? = nil
+    func send(_ event: AnalyticsCoreInterface.AnalyticsEvent) {
+        self.sendEvent = event
+    }
+}
