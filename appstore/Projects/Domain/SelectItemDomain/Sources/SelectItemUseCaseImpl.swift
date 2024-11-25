@@ -20,6 +20,7 @@ final class SelectItemUseCaseImpl: SelectItemUseCase {
     
     func execute(_ item: any SelectItemDomainInterface.SelectItem) {
         guard item.items.count > 0 else { return }
+        
         let selectItem = AnalyticsCoreInterface.SelectItem(
             item_list_id: item.item_list_id,
             item_list_name: item.item_list_name,
@@ -30,5 +31,7 @@ final class SelectItemUseCaseImpl: SelectItemUseCase {
                 )
             }
         )
+        
+        self.analytics.send(.select_item(selectItem))
     }
 }
