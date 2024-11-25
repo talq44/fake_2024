@@ -19,8 +19,7 @@ public extension Settings {
     
     enum Module {
         public static let `default`: Settings = .settings(
-            base: ["OTHER_LDFLAGS": ["-Objc"]],
-            configurations: ConfigurationTemplate.moduleConfigurations
+            base: ["OTHER_LDFLAGS": ["-Objc"]]
         )
     }
     
