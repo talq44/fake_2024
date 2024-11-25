@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SearchListRepository {
+public protocol SearchListRepository {
     func request(
         _ request: SearchListRequest
     ) async -> Result<SearchListEntity, SearchListError>
