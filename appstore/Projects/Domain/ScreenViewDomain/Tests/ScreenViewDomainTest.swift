@@ -5,33 +5,31 @@ import XCTest
 
 final class ScreenViewDomainTests: XCTestCase {
     
-    private var container: StubScreenViewUseCaseContainer!
+    private var analytics: StubAnalyticsSend!
+    private var sut: ScreenViewUseCaseImpl!
     
     override func setUpWithError() throws {
-        self.container = StubScreenViewUseCaseContainer(
-            assemble: ScreenViewUseCaseAssembly()
+        self.analytics = StubAnalyticsSend()
+        
+        self.sut = ScreenViewUseCaseImpl(
+            analytics: self.analytics
         )
     }
 
     override func tearDownWithError() throws {
-        self.container = nil
+        self.analytics = nil
+        self.sut = nil
     }
 
-    func testExample() throws {
+    func test_given_normal_when_execute_then_send() throws {
         // given
-        let output = self.container.build()
-        
-        guard let useCase = output.useCase as? ScreenViewUseCaseImpl else {
-            XCTFail("useCase가 성공적으로 생성되지 않았습니다.")
-            return
-        }
         
         // when
-        useCase.execute(page: .item_detail, screenAnyClass: classForCoder)
+        self.sut.execute(page: .item_detail, screenAnyClass: classForCoder)
         
         // then
         XCTAssertTrue(
-            true,
+            self.analytics.isSend,
             "analytics에 성공적으로 값이 전달되어야만 한다."
         )
     }
