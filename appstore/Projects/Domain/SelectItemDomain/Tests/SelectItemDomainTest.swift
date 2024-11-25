@@ -39,4 +39,22 @@ final class SelectItemDomainTests: XCTestCase {
             "analytics에 성공적으로 값이 전달되어야만 한다."
         )
     }
+    
+    func test_given_empty_when_execute_then_no_send() throws {
+        // given
+        let items = [SelectItem.Item]()
+        
+        // when
+        self.sut.execute(SelectItem(
+            item_list_id: "",
+            item_list_name: "",
+            items: items
+        ))
+        
+        // then
+        XCTAssertTrue(
+            self.analytics.isSendEvent() == false,
+            "비어있다면 전송되지 않아야 한다."
+        )
+    }
 }
