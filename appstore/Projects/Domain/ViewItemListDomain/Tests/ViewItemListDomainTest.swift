@@ -5,31 +5,28 @@ import XCTest
 
 final class ViewItemListDomainTests: XCTestCase {
     
-    private var container: StubViewItemListContainer!
+    private var analytics: StubAnalyticsCore!
+    private var sut: ViewItemListUseCaseImpl!
     
     override func setUpWithError() throws {
-        self.container = StubViewItemListContainer(
-            assemble: ViewItemListAssembly()
+        self.analytics = StubAnalyticsCore()
+        self.sut = ViewItemListUseCaseImpl(
+            analytics: self.analytics
         )
     }
 
     override func tearDownWithError() throws {
-        self.container = nil
+        self.analytics = nil
     }
 
-    func testExample() throws {
+    func test_give_normal_when_execute_then_analytics_send_event() throws {
         // given
         let item_list_id: String = "item_list_id"
         let item_list_name: String = "item_list_name"
         let items = [Item(item_id: "item_id", item_name: "item_name")]
         
-        guard let useCase = self.container.build() as? ViewItemListUseCaseImpl else {
-            XCTFail("useCase가 성공적으로 생성되지 않았습니다.")
-            return
-        }
-        
         // when
-        useCase.execute(ViewItemListInput(
+        self.sut.execute(ViewItemListInput(
             items: items,
             item_list_id: item_list_id,
             item_list_name: item_list_name
@@ -37,7 +34,7 @@ final class ViewItemListDomainTests: XCTestCase {
         
         // then
         XCTAssertTrue(
-            true,
+            self.analytics.sendEvent != nil,
             "analytics에 성공적으로 값이 전달되어야만 한다."
         )
     }
