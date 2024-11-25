@@ -53,11 +53,11 @@ flowchart TD
 ```mermaid
 flowchart TD
   FeatureExample --> Feature
-  FeatureExample --> FeatureTest
+  FeatureExample --> FeatureTesting
   Feature --> FeatureInterface
   FeatureTests --> Feature
-  FeatureTests --> FeatureTest
-  FeatureTest --> FeatureInterface
+  FeatureTests --> FeatureTesting
+  FeatureTesting --> FeatureInterface
   
 ```
 
