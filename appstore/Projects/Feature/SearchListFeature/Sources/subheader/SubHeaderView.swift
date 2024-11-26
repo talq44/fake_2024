@@ -14,25 +14,26 @@ import SnapKit
 
 final class SubHeaderView: UIView {
     typealias State = SubHeaderViewState
+    private enum Metric {
+        static let height: CGFloat = 20
+        static let horizontalInset: CGFloat = .horizontalMargin
+    }
     
     private let stackView = UIStackView()
     
-    private let leftContentView = UIView()
+    private let leftContentView = UIStackView()
     private let countLabel = HDSLabel(textStyle: .caption2)
     
-    private let centerContentView = UIView()
+    private let centerContentView = UIStackView()
     private let sellerImageView = UIImageView(
         image: UIImage(systemName: "person.crop.square")
     )
     private let sellerLabel = HDSLabel(textStyle: .caption2)
     
-    private let rightContentView = UIView()
+    private let rightContentView = UIStackView()
     private let rankLabel = HDSLabel(textStyle: .caption2)
     private let genreLabel = HDSLabel(textStyle: .caption2)
     
-    private enum Metric {
-        static let horizontalInset: CGFloat = .horizontalMargin
-    }
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -49,15 +50,25 @@ final class SubHeaderView: UIView {
     }
     
     private func addConfigure() {
-        self.stackView.axis = .vertical
+        self.stackView.axis = .horizontal
         self.stackView.distribution = .fillEqually
-        self.countLabel.textAlignment = .left
-        self.sellerLabel.textAlignment = .center
-        self.genreLabel.textAlignment = .right
+        [self.leftContentView,
+         self.centerContentView,
+         self.rightContentView].forEach { stackView in
+            self.stackView.axis = .horizontal
+        }
+        self.leftContentView.alignment = .leading
+        self.centerContentView.alignment = .center
+        self.rightContentView.alignment = .trailing
         
         self.stackView.addArrangedSubview(leftContentView)
         self.stackView.addArrangedSubview(centerContentView)
         self.stackView.addArrangedSubview(rightContentView)
+        
+        self.countLabel.textAlignment = .left
+        self.sellerLabel.textAlignment = .center
+        self.rankLabel.textAlignment = .right
+        self.genreLabel.textAlignment = .right
     }
     
     private func makeConstraints() {
@@ -65,21 +76,24 @@ final class SubHeaderView: UIView {
         stackView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(Metric.horizontalInset)
+            $0.height.equalTo(Metric.height)
         }
         
-        self.leftContentView.addSubview(countLabel)
+        self.leftContentView.addArrangedSubview(countLabel)
+        self.leftContentView.addArrangedSubview(UIView())
         
-        self.centerContentView.addSubview(sellerImageView)
-        self.centerContentView.addSubview(sellerLabel)
+        self.centerContentView.addArrangedSubview(sellerImageView)
+        self.centerContentView.addArrangedSubview(sellerLabel)
         
-        self.rightContentView.addSubview(rankLabel)
-        self.rightContentView.addSubview(genreLabel)
+        self.rightContentView.addArrangedSubview(UIView())
+        self.rightContentView.addArrangedSubview(rankLabel)
+        self.rightContentView.addArrangedSubview(genreLabel)
     }
     
     func bind(state: State) {
         self.countLabel.text = state.ratingCount.koreanNumberFormat
         self.sellerLabel.text = state.brandName
-        self.rankLabel.text = state.ranking.toString
+        self.rankLabel.text = "#" + state.ranking.toString
         self.genreLabel.text = state.genre
     }
 }
