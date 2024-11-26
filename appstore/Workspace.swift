@@ -2,7 +2,7 @@
 import ProjectDescription
 
 let workspace = Workspace(
-    name: "amondz",
+    name: "FakeAppStore",
     projects: [
         "Projects/**"
     ]

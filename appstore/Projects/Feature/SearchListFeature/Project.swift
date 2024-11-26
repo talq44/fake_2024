@@ -18,6 +18,7 @@ let project = Project.module(
                 .feature(target: .SearchListFeature, type: .interface),
                 .domain(target: .SearchListDomain, type: .interface),
                 .shared(target: .TalqDesignSystem, type: .implementation),
+                .shared(target: .FoundationShared, type: .implementation),
             ]
         ),
         .testing(
@@ -52,6 +53,7 @@ let project = Project.module(
                 .feature(target: .SearchListFeature, type: .interface),
                 .domain(target: .SearchListDomain, type: .interface),
                 .shared(target: .TalqDesignSystem, type: .implementation),
+                .shared(target: .FoundationShared, type: .implementation),
             ]
         )
     ]
