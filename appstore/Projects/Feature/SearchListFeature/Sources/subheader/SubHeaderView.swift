@@ -7,7 +7,14 @@
 
 import UIKit
 
+import TalqDesignSystem
+
+import SnapKit
+
 final class SubHeaderView: UIView {
+    private enum Metric {
+        static let horizontalInset: CGFloat = .horizontalMargin
+    }
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
