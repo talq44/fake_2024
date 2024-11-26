@@ -1,0 +1,40 @@
+name: develop build test fast
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MISE: ~/.local/bin/mise
+
+jobs:
+  build-test:
+    if: ${{ vars.USE_SELF_HOSTED == 'true' }} 
+    runs-on: ${{ vars.SELF_HOTSTED_NAME }}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: check mise
+      run: |
+        ${{ env.MISE }} --version
+
+    - name: Tuist clean
+      run: |
+        ${{ env.MISE }} x -- tuist clean
+
+    - name: Tuist Install
+      run: |
+        ${{ env.MISE }} x -- tuist install
+
+    - name: Run Tuist build
+      run: |
+        ${{ env.MISE }} x -- tuist build
+
+    - name: Run Tuist test
+      if: ${{ vars.TUIST_TEST_ON_OFF == 'true' }}
+      run: |
+        ${{ env.MISE }} x -- tuist test
