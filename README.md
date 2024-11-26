@@ -29,6 +29,7 @@ flowchart TD
 
 # 아키텍처
 ### Clean Architecture
+
 - Presentation -> Domain <- Data 형태를 사용합니다. [(링크)](https://bitloops.com/docs/bitloops-language/learning/software-architecture/clean-architecture)
 ![clean-architecture-and-ddd](https://github.com/user-attachments/assets/2e5d166f-5bb3-42ab-b884-238ea3d0fc0a)
 
@@ -36,6 +37,11 @@ flowchart TD
 <details>
 <summary>추가 설명</summary>
 <div markdown="1">
+
+- ![image](https://github.com/user-attachments/assets/84b62343-78b4-41f2-9c3a-1bfecf968b83)
+  - 도메인 모듈
+  - Input / Output protocol
+
 
 - ![34_8](https://github.com/user-attachments/assets/0f554337-40e5-479d-b6b9-25184215d51c)
 - 클린아키텍처 그림 34.8
