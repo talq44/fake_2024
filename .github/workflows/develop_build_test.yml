@@ -9,6 +9,7 @@ concurrency:
 
 jobs:
   build-test:
+    if: ${{ vars.USE_SELF_HOSTED != 'true' }} 
     runs-on: macos-latest
     steps:
     - name: Checkout
