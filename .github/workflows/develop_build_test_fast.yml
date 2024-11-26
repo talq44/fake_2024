@@ -28,13 +28,19 @@ jobs:
 
     - name: Tuist Install
       run: |
+        cd appstore/
+
         ${{ env.MISE }} x -- tuist install
 
     - name: Run Tuist build
       run: |
+        cd appstore/
+
         ${{ env.MISE }} x -- tuist build
 
     - name: Run Tuist test
       if: ${{ vars.TUIST_TEST_ON_OFF == 'true' }}
       run: |
+        cd appstore/
+        
         ${{ env.MISE }} x -- tuist test
