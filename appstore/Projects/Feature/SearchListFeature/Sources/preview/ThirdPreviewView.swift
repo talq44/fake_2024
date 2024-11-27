@@ -16,7 +16,6 @@ class ThirdPreviewView: UIView {
     typealias State = ThirdPreviewState
     
     enum Metric {
-        static let horizontalInset: CGFloat = .horizontalMargin
         static let spacing: CGFloat = .itemSpacing
         static let round: CGFloat = .itemRound
         static let itemBorder: CGFloat = 1
@@ -63,7 +62,7 @@ class ThirdPreviewView: UIView {
         
         self.stackView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(Metric.horizontalInset)
+            $0.horizontalEdges.equalToSuperview()
         }
     }
     
