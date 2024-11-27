@@ -16,7 +16,6 @@ final class SubHeaderView: UIView {
     typealias State = SubHeaderViewState
     private enum Metric {
         static let height: CGFloat = 20
-        static let horizontalInset: CGFloat = .horizontalMargin
     }
     
     private let stackView = UIStackView()
@@ -75,7 +74,7 @@ final class SubHeaderView: UIView {
         self.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(Metric.horizontalInset)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(Metric.height)
         }
         

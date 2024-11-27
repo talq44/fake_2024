@@ -16,7 +16,6 @@ class HeaderView: UIView {
     typealias State = HeaderViewState
 
     private enum Metric {
-        static let horizontalInset: CGFloat = .horizontalMargin
         static let imageSize = CGSize(width: 60, height: 60)
         static let radius: CGFloat = 16
         static let itemSpacing: CGFloat = .itemSpacing
@@ -84,7 +83,7 @@ class HeaderView: UIView {
         self.addSubview(stackView)
         self.stackView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(Metric.horizontalInset)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         self.thumbnail.snp.makeConstraints {
